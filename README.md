@@ -31,9 +31,37 @@ A perfect tool for researchers, developers, and crypto enthusiasts, the Crypto-M
 
 ## Quick Guide 🚀
 
-1. **Launch the Explorer:** Start your exploration journey with a search or browse approach.
-2. **Deep Dive into Assets:** Click on any asset to view its detailed metadata and market metrics.
-3. **Utilize Filters:** Narrow down your search using filters for asset types, market metrics, or any specific criteria.
+### Building with Next.js
+
+1. **Setup Next.js Project:**
+   - Install Node.js and npm if you haven't.
+   - Initialize a new project using the Next.js boilerplate:
+     ```
+     npx create-next-app crypto-metadata-explorer
+     cd crypto-metadata-explorer
+     ```
+
+2. **Data Fetching:**
+   - Use the `getServerSideProps` function in your desired page component for server-side rendering, fetching data from the Mobula API endpoint.
+     ```javascript
+     export async function getServerSideProps() {
+       const res = await fetch('https://api.app-mobula.com/api/1/metadata');
+       const data = await res.json();
+       return { props: { data } };
+     }
+     ```
+
+3. **UI Components and Display:**
+   - Create reusable components for asset listings, metadata details, and market metrics.
+   - Use packages like `styled-components` for styling and `react-query` for state management and data fetching.
+   
+4. **Filters and Search:**
+   - Implement filters by categorizing data. Utilize state and effects to manage and apply filters dynamically.
+   - Incorporate a search bar functionality, perhaps using libraries like `react-search-box` for enhanced search experiences.
+
+5. **Optimizing Performance:**
+   - Given the vast amount of data, consider implementing pagination or an "infinite scroll" feature. Libraries like `react-infinite-scroll-component` can be helpful.
+   - Also, consider employing a caching mechanism to avoid redundant API calls and boost performance.
 
 ---
 
